@@ -21,16 +21,6 @@ from lms.envs.common import *  # pylint: disable=wildcard-import  # noqa: F403
 from openedx.core.apidocs import API_DOCS_SETTINGS
 from openedx.core.lib.derived import derive_settings
 
-# Turn on all the boolean feature flags, so that conditionally included
-# API endpoints will be found.
-for key, value in FEATURES.items():  # noqa: F405
-    if value is False:
-        FEATURES[key] = True  # noqa: F405
-
-# Settings that will fail if we enable them, and we don't need them for docs anyway.
-FEATURES["RUN_AS_ANALYTICS_SERVER_ENABLED"] = False  # noqa: F405
-FEATURES["ENABLE_SOFTWARE_SECURE_FAKE"] = False  # noqa: F405
-
 INSTALLED_APPS.extend(  # noqa: F405
     [
         "cms.djangoapps.contentstore.apps.ContentstoreConfig",
